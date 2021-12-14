@@ -2,33 +2,46 @@ import React, {useState} from 'react';
 import './App.css';
 import Accordion from "./components/Accordion/Accordion";
 import {Rating, RatingValueType} from "./components/Raiting/RatingRating";
-import {OnOff} from "./components/OnOff/OnOff";
-import {UncontrolledAccordion} from "./components/UncontrolledAccordion/UncontrolledAccordion";
+
 import {UncontrolledRating} from "./components/UncontrolledRating/UncontrolledRating";
 import {UncontrolledOnOff} from "./components/UncontrolledOnOff/UncontrolledOnOff";
 import {UncontrolledInput} from "./components/UncontrolledInput";
-import {ControlledCheckBox, ControlledSelect, Input} from "./components/Input";
+import {ControlledCheckBox, Input} from "./components/Input";
+import {ComponentSelect} from "./components/Select/ComponentSelect";
 
 
-function App(props: any) {
+function App() {
 
     let [ratingValue, setRatingValue] = useState<RatingValueType>(0)
     let [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(false)
     let [switchOn, setSwitchOn] = useState<boolean>(false)
+    const [value, setValue] = useState('2')
+
     return (
         <div className={"App"}>
             {/*<UncontrolledInput/>*/}
             <Input/>
-            <ControlledSelect/>
-<ControlledCheckBox/>
+            <ComponentSelect value={value} title={"Madrid"} items={[
+                {title: "her", value: 1},
+                {title: "Hold", value: 2},
+                {title: "Purple", value: 3}]}
+                             onClick={() => (alert(`user with ID should be happy`))}
+                             onChange={setValue}/>
+            <ControlledCheckBox/>
             {/*<UncontrolledAccordion titleValue={"Menu"} />*/}
             <UncontrolledRating/>
             <Rating value={ratingValue} onClick={setRatingValue}/>
-            <Accordion titleValue={"Menu"}
+            <Accordion titleValue={"Users"}
                        collapsed={accordionCollapsed}
                        onChange={() => {
                            setAccordionCollapsed(!accordionCollapsed)
-                       }}/>
+                       }}
+                       items={[
+                           {title: "Dimsc", value: 1},
+                           {title: "Valera", value: 2},
+                           {title: "Oly", value: 3}]}
+                       onClick={(value) => (alert(`user with ID ${value} should be happy`))}
+            />
             {/*<OnOff  on={switchOn} onChange={(on)=>{setSwitchOn(on)}}/>*/}
             <UncontrolledOnOff onChange={setSwitchOn}/> {switchOn.toString()}
             {/*<OnOff />*/}
