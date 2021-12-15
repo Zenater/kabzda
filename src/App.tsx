@@ -5,8 +5,8 @@ import {Rating, RatingValueType} from "./components/Raiting/RatingRating";
 
 import {UncontrolledRating} from "./components/UncontrolledRating/UncontrolledRating";
 import {UncontrolledOnOff} from "./components/UncontrolledOnOff/UncontrolledOnOff";
-import {UncontrolledInput} from "./components/UncontrolledInput";
-import {ControlledCheckBox, Input} from "./components/Input";
+import {UncontrolledInput} from "./components/Inputs/UncontrolledInput";
+import {ControlledCheckBox, Input} from "./components/Inputs/Input";
 import {ComponentSelect} from "./components/Select/ComponentSelect";
 
 
@@ -21,21 +21,19 @@ function App() {
         <div className={"App"}>
             {/*<UncontrolledInput/>*/}
             <Input/>
-            <ComponentSelect value={value} title={"Madrid"} items={[
+   {/*         <ComponentSelect value={value} title={"Madrid"} items={[
                 {title: "her", value: 1},
                 {title: "Hold", value: 2},
                 {title: "Purple", value: 3}]}
                              onClick={() => (alert(`user with ID should be happy`))}
-                             onChange={setValue}/>
+                             onChange={setValue}/>*/}
             <ControlledCheckBox/>
             {/*<UncontrolledAccordion titleValue={"Menu"} />*/}
             <UncontrolledRating/>
             <Rating value={ratingValue} onClick={setRatingValue}/>
             <Accordion titleValue={"Users"}
                        collapsed={accordionCollapsed}
-                       onChange={() => {
-                           setAccordionCollapsed(!accordionCollapsed)
-                       }}
+                       onChange={() => setAccordionCollapsed(!accordionCollapsed)}
                        items={[
                            {title: "Dimsc", value: 1},
                            {title: "Valera", value: 2},
